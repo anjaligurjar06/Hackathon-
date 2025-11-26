@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Tinder | Welcome</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="auth">
+      <section class="hero">
+        <div class="hero__badge">Job Tinder</div>
+        <h1>Swipe into your next role</h1>
+        <p>
+          Discover curated opportunities that match your vibe. Connect with
+          recruiters instantly and keep your job search exciting.
+        </p>
+        <ul class="hero__highlights">
+          <li>AI-powered matches</li>
+          <li>Instant chat with recruiters</li>
+          <li>Stay anonymous until you both match</li>
+        </ul>
+      </section>
+      <section class="panel">
+        <header class="panel__tabs" role="tablist" aria-label="Auth forms">
+          <button id="login-tab" class="active" data-target="login" role="tab">
+            Log in
+          </button>
+          <button id="signup-tab" data-target="signup" role="tab">
+            Sign up
+          </button>
+        </header>
+        <form id="login-form" class="panel__form active" novalidate>
+          <h2>Welcome back</h2>
+          <p class="muted small">
+            Recruiter preview:<br />
+            <strong>recruiter@jobtinder.com</strong> / <strong>hireme123</strong>
+          </p>
+          <p class="muted small">
+            Job seeker preview:<br />
+            <strong>seeker@jobtinder.com</strong> / <strong>hireme123</strong>
+          </p>
+          <label>
+            Email
+            <input type="email" name="email" placeholder="you@email.com" required />
+          </label>
+          <label>
+            Password
+            <input type="password" name="password" placeholder="••••••••" required />
+          </label>
+          <div class="panel__actions">
+            <label class="remember">
+              <input type="checkbox" /> Keep me signed in
+            </label>
+            <a href="#" class="muted">Forgot password?</a>
+          </div>
+          <button type="submit" class="primary">Continue</button>
+          <button type="button" class="secondary" data-provider="linkedin">
+            Continue with LinkedIn
+          </button>
+        </form>
+        <form id="signup-form" class="panel__form" novalidate>
+          <h2>Create your account</h2>
+          <label>
+            Full name
+            <input type="text" name="name" placeholder="Jordan Sparks" required />
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" placeholder="you@email.com" required />
+          </label>
+          <label>
+            Password
+            <input type="password" name="password" placeholder="Choose a strong password" required />
+          </label>
+          <fieldset class="role">
+            <legend>I am a</legend>
+            <label>
+              <input type="radio" name="role" value="recruiter" required />
+              Recruiter
+            </label>
+            <label>
+              <input type="radio" name="role" value="job-seeker" required />
+              Job seeker
+            </label>
+          </fieldset>
+          <label class="checkbox">
+            <input type="checkbox" required />
+            I agree to the Terms & Community Guidelines
+          </label>
+          <button type="submit" class="primary">Get matched</button>
+        </form>
+      </section>
+    </main>
+    <section class="dashboard" hidden>
+      <header class="dashboard__header">
+        <div>
+          <p class="eyebrow">Recruiter Console</p>
+          <h2>Morning, Jordan 👋</h2>
+          <p class="muted">Track your pipeline and keep your postings fresh.</p>
+        </div>
+        <button id="logout" class="secondary ghost">Log out</button>
+      </header>
+      <nav class="dashboard__tabs" role="tablist" aria-label="Recruiter views">
+        <button class="active" data-view="composer" role="tab">Add job</button>
+        <button data-view="active" role="tab">Active jobs</button>
+        <button data-view="applications" role="tab">Applications</button>
+      </nav>
+      <section class="dashboard__panel active" id="composer-panel">
+        <form id="job-form" class="job-form" novalidate>
+          <label>
+            Company name
+            <input type="text" name="company" placeholder="Butter Labs" required />
+          </label>
+          <label>
+            Job role
+            <input type="text" name="role" placeholder="Senior Product Designer" required />
+          </label>
+          <label>
+            Job description
+            <textarea
+              name="description"
+              placeholder="Highlight impact, stack, team rituals..."
+              required
+            ></textarea>
+          </label>
+          <button type="submit" class="primary">Publish posting</button>
+        </form>
+      </section>
+      <section class="dashboard__panel" id="active-panel">
+        <div class="panel-heading">
+          <h3>Active roles</h3>
+          <p class="muted small">Auto-published to the talent marketplace.</p>
+        </div>
+        <ul id="job-list" class="job-list"></ul>
+      </section>
+      <section class="dashboard__panel" id="applications-panel">
+        <div class="panel-heading">
+          <h3>Incoming applications</h3>
+          <p class="muted small">Sorted by match score. Higher is better.</p>
+        </div>
+        <ul id="application-list" class="application-list"></ul>
+      </section>
+    </section>
+    <section class="dashboard-seeker" hidden>
+      <header class="dashboard__header">
+        <div>
+          <p class="eyebrow">Job seeker cockpit</p>
+          <h2>Hey, Taylor 👋</h2>
+          <p class="muted">Keep swiping roles, perfect your resume, and prep for ATS.</p>
+        </div>
+        <button id="logout-seeker" class="secondary ghost">Log out</button>
+      </header>
+      <nav class="seeker__tabs" role="tablist" aria-label="Seeker views">
+        <button class="active" data-view="seek-main">Discover roles</button>
+        <button data-view="seek-resume">Build resume</button>
+        <button data-view="seek-ats">Check ATS</button>
+        <button data-view="seek-rec">Recommendations</button>
+      </nav>
+      <section class="seeker__panel active" id="seek-main-panel">
+        <div class="panel-heading">
+          <h3>Match me to roles</h3>
+          <p class="muted small">Pick your focus and swipe through curated roles.</p>
+        </div>
+        <label class="role-picker">
+          Desired role
+          <select id="desired-role">
+            <option value="">Select a track</option>
+            <option value="Product Designer">Product Designer</option>
+            <option value="Frontend Engineer">Frontend Engineer</option>
+            <option value="Growth PM">Growth PM</option>
+            <option value="Gen AI Engineer">Gen AI Engineer</option>
+            <option value="Data Scientist">Data Scientist</option>
+            <option value="Backend Developer">Backend Developer</option>
+            <option value="Full Stack Engineer">Full Stack Engineer</option>
+          </select>
+        </label>
+        <div class="card-stack" id="job-card-stack">
+          <p class="muted small">Choose a role above to load matches.</p>
+        </div>
+        <p class="muted small tip">
+          Hover any card to preview the description. Swipe left/right (buttons) to reject or save.
+        </p>
+      </section>
+      <section class="seeker__panel" id="seek-resume-panel">
+        <div class="panel-heading">
+          <h3>Build a resume</h3>
+          <p class="muted small">Upload your current resume and we’ll fine-tune it with AI.</p>
+        </div>
+        <form id="resume-form" class="resume-form" novalidate>
+          <label class="upload-zone">
+            <input type="file" id="resume-file" accept=".pdf,.doc,.docx" hidden />
+            <span>Drop your resume here or click to browse</span>
+          </label>
+          <button type="submit" class="primary">Fine-tune with AI</button>
+        </form>
+      </section>
+      <section class="seeker__panel" id="seek-ats-panel">
+        <div class="panel-heading">
+          <h3>Check ATS score</h3>
+          <p class="muted small">Pair a target JD with your resume file to simulate ATS.</p>
+        </div>
+        <form id="ats-form" class="ats-form" novalidate>
+          <label>
+            Job description
+            <textarea name="ats-job" placeholder="Paste the JD you’re targeting"></textarea>
+          </label>
+          <label class="upload-zone">
+            <input type="file" id="ats-resume-file" accept=".pdf,.doc,.docx" hidden />
+            <span>Upload your resume PDF to simulate an ATS scan</span>
+          </label>
+          <button type="submit" class="primary">Run ATS check</button>
+        </form>
+        <div id="ats-result" class="ats-result muted small"></div>
+      </section>
+      <section class="seeker__panel" id="seek-rec-panel">
+        <div class="panel-heading">
+          <h3>Recommendations</h3>
+          <p class="muted small">Based on your resume highlights.</p>
+        </div>
+        <ul id="recommendation-list" class="recommendation-list"></ul>
+      </section>
+    </section>
+    <script src="https://esm.run/@google/generative-ai"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
+
